@@ -12,13 +12,12 @@ $m \ddot{x} + b \dot{x} + k x = F(t)$
 where:
 
 - $x$ is the displacement of the mass,
-  
+
 - $\dot{x}$ is the velocity of the mass,
-  
+
 - $\ddot{x}$ is the acceleration of the mass,
-  
+
 - $F(t)$ is the external force applied to the system.
-  
 
 To determine the state-space representation of the mass-spring-damper 
 system, we reduce the second-order differential equation to a set of two
@@ -120,8 +119,16 @@ plt.xlabel("Iteration")
 plt.ylabel("Measured distance [m]")
 
 plt.show()
+
+# Save data for estimation
+np.save("01_Ymeas", Ymeas)
+np.save("01_Ysim", Ysim)
+np.save("01_Usim", Usim)
+np.savez("sys_msd_discrete", Ad=Ad, Bd=Bd, Cd=Cd, Dd=Dd, dt=dt)
+
 ```
 
 ## References
+
 - [Mechanics Problems using StateSpace](https://docs.sympy.org/latest/tutorials/physics/control/mechanics_problems.html)
 - [scipy.signal.cont2discrete](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.cont2discrete.html)
